@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/anseljh/legalese-score#readme",
   "dependencies": {
+    "american-legal-archaisms": "^1.0.14",
     "chalk": "^1.1.1",
     "flesch": "^0.1.0",
     "flesch-kincaid": "^0.1.0",

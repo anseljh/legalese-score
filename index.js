@@ -4,6 +4,7 @@ fleschKincaid = require('flesch-kincaid');
 smog = require('smog-formula');
 wordcount = require('wordcount');
 syllable = require('syllable');
+archaisms = require('american-legal-archaisms');
 
 example1 = "I am herewith returning the stipulation to dismiss in the above entitled matter; the same being duly executed by me."
 console.log(chalk.blue(example1));
