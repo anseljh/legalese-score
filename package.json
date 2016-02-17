@@ -1,0 +1,30 @@
+{
+  "name": "legalese-score",
+  "version": "0.0.1",
+  "description": "Quantify awfulness in legal writing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anseljh/legalese-score.git"
+  },
+  "keywords": [
+    "writing",
+    "readability",
+    "legal"
+  ],
+  "author": "Ansel Halliburton <github@anseljh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anseljh/legalese-score/issues"
+  },
+  "homepage": "https://github.com/anseljh/legalese-score#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "flesch": "^0.1.0",
+    "flesch-kincaid": "^0.1.0",
+    "smog-formula": "^0.1.0"
+  }
+}
