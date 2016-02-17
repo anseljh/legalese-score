@@ -25,6 +25,8 @@
     "chalk": "^1.1.1",
     "flesch": "^0.1.0",
     "flesch-kincaid": "^0.1.0",
-    "smog-formula": "^0.1.0"
+    "smog-formula": "^0.1.0",
+    "syllable": "^0.1.4",
+    "wordcount": "^1.1.1"
   }
 }
