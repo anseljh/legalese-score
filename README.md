@@ -12,6 +12,7 @@ Legal writing can be terrible, but it doesn't have to be. This project aims to h
 * [american-legal-archaisms](https://github.com/kemitchell/american-legal-archaisms) by [@kemitchell](https://github.com/kemitchell)
 * [Conversation on Twitter](https://twitter.com/anseljh/status/699775323173314560)
 * [TextStatistics.js](https://github.com/cgiffard/TextStatistics.js): "Generate information about text including syllable counts and Flesch-Kincaid, Gunning-Fog, Coleman-Liau, SMOG and Automated Readability scores."
+* [Readibility (Python) by @mmautner](https://github.com/mmautner/readability) and [@andreasvc fork](https://github.com/andreasvc/readability)
 
 # Licensing
 
