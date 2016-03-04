@@ -11,6 +11,7 @@ Legal writing can be terrible, but it doesn't have to be. This project aims to h
 * [flesch](https://github.com/wooorm/flesch), [flesch-kincaid](https://github.com/wooorm/flesch-kincaid), and [smog-formula](https://github.com/wooorm/smog-formula) are components of [retext-readability](https://github.com/wooorm/retext-readability), a module for [Retext](https://github.com/wooorm/retext), all by [@wooorm](https://github.com/wooorm)
 * [american-legal-archaisms](https://github.com/kemitchell/american-legal-archaisms) by [@kemitchell](https://github.com/kemitchell)
 * [Conversation on Twitter](https://twitter.com/anseljh/status/699775323173314560)
+* [TextStatistics.js](https://github.com/cgiffard/TextStatistics.js): "Generate information about text including syllable counts and Flesch-Kincaid, Gunning-Fog, Coleman-Liau, SMOG and Automated Readability scores."
 
 # Licensing
 
