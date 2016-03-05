@@ -13,6 +13,7 @@ Legal writing can be terrible, but it doesn't have to be. This project aims to h
 * [Conversation on Twitter](https://twitter.com/anseljh/status/699775323173314560)
 * [TextStatistics.js](https://github.com/cgiffard/TextStatistics.js): "Generate information about text including syllable counts and Flesch-Kincaid, Gunning-Fog, Coleman-Liau, SMOG and Automated Readability scores."
 * [Readibility (Python) by @mmautner](https://github.com/mmautner/readability) and [@andreasvc fork](https://github.com/andreasvc/readability)
+* William H. DuBay, ["The Principles of Readability"](http://en.copian.ca/library/research/readab/readab.pdf) (2004)
 
 # Licensing
 
