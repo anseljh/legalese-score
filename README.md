@@ -15,8 +15,8 @@ Legal writing can be terrible, but it doesn't have to be. This project aims to h
 * [Readibility (Python) by @mmautner](https://github.com/mmautner/readability) and [@andreasvc fork](https://github.com/andreasvc/readability)
 * William H. DuBay, ["The Principles of Readability"](http://en.copian.ca/library/research/readab/readab.pdf) (2004)
 * California Office of Privacy Protection, [Recommended Practices on California Information-Sharing Disclosures and Privacy Policy Statements](https://oag.ca.gov/sites/all/files/agweb/pdfs/privacy/COPP_bus_reportinfo_sharing1.pdf?), note 28 (discussing National Adult Literacy Survey and California Financial Information Privacy Act)
-* [Cal. Financial Code § 4053(d)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=4053.&lawCode=FIN) (requirements for financial industry privacy policies, including Flesch <= 50)
-* [10 CCR § 2689.4(a)](https://govt.westlaw.com/calregs/Document/IA32AD2E0D49211DEBC02831C6D6C108E?contextData=%28sc.Search%29&rank=1&originationContext=Search+Result&navigationPath=Search%2fv3%2fsearch%2fresults%2fnavigation%2fi0ad6005600000153a03219749e53828e%3fstartIndex%3d1%26Nav%3dREGULATION_PUBLICVIEW%26contextData%3d%28sc.Default%29&list=REGULATION_PUBLICVIEW&transitionType=SearchItem&listSource=Search&viewType=FullText&t_T1=10&t_T2=2689.4&t_S1=CA+ADC+s) (defines "clear and conspicuous" as Flesch <= 50, etc.)
+* [Cal. Financial Code § 4053(d)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=4053.&lawCode=FIN) (requirements for financial industry privacy policies, including Flesch >= 50)
+* [10 CCR § 2689.4(a)](https://govt.westlaw.com/calregs/Document/IA32AD2E0D49211DEBC02831C6D6C108E?contextData=%28sc.Search%29&rank=1&originationContext=Search+Result&navigationPath=Search%2fv3%2fsearch%2fresults%2fnavigation%2fi0ad6005600000153a03219749e53828e%3fstartIndex%3d1%26Nav%3dREGULATION_PUBLICVIEW%26contextData%3d%28sc.Default%29&list=REGULATION_PUBLICVIEW&transitionType=SearchItem&listSource=Search&viewType=FullText&t_T1=10&t_T2=2689.4&t_S1=CA+ADC+s) (defines "clear and conspicuous" as Flesch >= 50, etc.)
 
 # Licensing
 
