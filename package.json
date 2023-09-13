@@ -1,10 +1,21 @@
 {
   "name": "legalese-score",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Quantify awfulness in legal writing",
-  "main": "index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "src",
+    "tsconfig.json",
+    "package-lock.json"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -22,12 +33,23 @@
   },
   "homepage": "https://github.com/anseljh/legalese-score#readme",
   "dependencies": {
-    "american-legal-archaisms": "^1.0.14",
+    "@types/typescript": "^2.0.0",
+    "american-legal-archaisms": "^1.0.18",
+    "calculate-correlation": "^1.2.3",
     "chalk": "^1.1.1",
     "flesch": "^0.1.0",
     "flesch-kincaid": "^0.1.0",
+    "matrix-correlation": "^0.0.1",
+    "node-correlation": "^2.0.0",
     "smog-formula": "^0.1.0",
+    "spearman-rho": "^1.0.6",
     "syllable": "^0.1.4",
+    "typescript": "^5.2.2",
     "wordcount": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^20.6.0",
+    "@types/syllable": "^5.0.2"
   }
 }
