@@ -7,7 +7,7 @@ Provides somes methods in scoring text via the quantified methods referenced whe
 
 ## Installation
 ```bash
-npm install awslegal-legalese-score
+npm install awslegal-egalese-score
 ```
 
 ## Basic Usage
