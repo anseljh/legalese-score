@@ -1,5 +1,5 @@
 {
-  "name": "legalese-score",
+  "name": "awslegal-egalese-score",
   "version": "1.0.0",
   "description": "Quantify awfulness in legal writing",
   "files": [
