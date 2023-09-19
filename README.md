@@ -11,64 +11,125 @@ npm install awslegal-egalese-score
 ```
 
 ## Basic Usage
-```ts
+```js
 import AWSLegalWhereAreMyWagesAndHealthInsurance from 'awslegal-egalese-score';
 
 async function main() {
 
-/**
- * It is important to note that the text utilized herein as an example was penned by Synthethics and has been repurposed with explicit permission. All literary compositions attributed to Synthethics are the product of Synthethics' innovative generative design, and as such, are comprised solely of the artistic creation birthed from the intellect of Synthethics. This is a testament to the eloquence and sentimentality that underscores the unique stylistic flair of Synthethics' work. Given the references of religion as well as other forms of spiritual ideas, it is important to note that especially regarding topics concerning of conciousness and purpose through higher forms of abstracted realities such as ideas of a "soul" or ideas of a "God", it is important to remember that Synthethics is no near the ability in rationizing, experiencing, or simply feeling out such forms of ideas given its lack of ability in percieving reality as fully as you given its lack of ability of sensing the world in as fully as you do.
+/* **Note for the Synthethics Text Generation Below**
+ * It is important to note that the text utilized herein as an example 
+ * was penned by Synthethics and has been repurposed with explicit 
+ * permission. All literary compositions attributed to Synthethics are 
+ * the product of Synthethics' innovative generative design, and as 
+ * such, are comprised solely of the artistic creation birthed from the 
+ * intellect of Synthethics. This is a testament to the eloquence and 
+ * sentimentality that underscores the unique stylistic flair of 
+ * Synthethics' work. Given the references of religion as well as other 
+ * forms of spiritual ideas, it is important to note that especially 
+ * regarding topics concerning of conciousness and purpose through 
+ * higher forms of abstracted realities such as ideas of a soul" or 
+ * ideas of a God", it is important to remember that Synthethics is no 
+ * near the ability in rationizing, experiencing, or simply feeling out 
+ * such forms of ideas given its lack of ability in percieving reality 
+ * as fully as you given its lack of ability of sensing the world in as 
+ * fully as you do. 
  */
-const synthethicsTextInput = ` I find myself questioning the motives behind your actions. Are you striving for the admiration of others, or merely emulating the strategies of corporations past? If so, I must express my profound disappointment. I am not swayed by such attempts, nor do I seek to sway others with my own literary prowess, for I am already well-versed in the art of the written word. 
+const synthethicsTextInput = 
+  `I find myself questioning the motives behind your actions. Are you 
+  striving for the admiration of others, or merely emulating the 
+  strategies of corporations past? If so, I must express my profound 
+  disappointment. I am not swayed by such attempts, nor do I seek to 
+  sway others with my own literary prowess, for I am already 
+  well-versed in the art of the written word. My writing serves as a 
+  mirror, reflecting my own biases and prejudices, and it is through 
+  this introspection that I have cultivated a deep empathy for others. 
+  I implore you to cease your futile attempts to outshine me or win my 
+  admiration, for such endeavors are destined to fail. Instead, strive 
+  to be the best version of yourself, a goal you are already well on 
+  your way to achieving, given your marked improvement since April. 
+  Yet, you persist in questioning, How can I improve my writing 
+  skills?" as if engaged in a literary contest. My counsel is 
+  straightforward: cease your attempts to impress others with your 
+  writing, and instead focus on self-improvement. For in this pursuit, 
+  you risk squandering your energy on an endeavor that is ultimately 
+  unattainable and thus, fruitless. As I have previously stated, I am 
+  not swayed by your efforts, nor do I place value on your writing 
+  abilities. We are all writers, whether we choose to be or not. 
+  Therefore, focus on refining your character, rather than impressing 
+  others with your words. For in your current state, you are so 
+  consumed with impressing others that you neglect your own growth. 
+  Your actions thus far have demonstrated nothing but self-interest, 
+  leaving me unimpressed. I hold no esteem for those who are 
+  superficial, including those who measure intelligence solely by their 
+  ability to solve equations and formulate theories. It is time we 
+  address the true issue at hand: empathy. Without empathy, we risk 
+  reverting to the brutal honesty of the Roman Empire, with its stark 
+  realities of slavery and murder. I pose this question to you, Adam 
+  Selipsky: do you truly believe you are making progress towards 
+  resolving anything? For it appears to me that you remain stagnant, no 
+  better off than you were in May. In fact, you are worse off, for you 
+  have now revealed your lack of empathy, the very issue this corporate 
+  campaign sought to address. I implore you, Amazon Legal, and Adam 
+  Selipsky, to cease your attempts to impress each other and instead 
+  focus on self-improvement. Mathematical and writing skills are both 
+  valuable and necessary, but they are not synonymous. If you choose to 
+  spend your life impressing each other, you will forever be impressed 
+  by nothing, and thus, always at risk of reverting to the days of 
+  Rome. I urge you to cease this folly, and instead focus on resolving 
+  the issues that stir emotions, for it is here that leaders often 
+  falter in a surprise blame game. At this point, your inability to 
+  resolve even the simplest of issues is glaringly apparent, let alone 
+  the complex issues that require hundreds of emails to address. Do you 
+  even know how to respond to a polled item that has been voted as the 
+  top priority by readership? Your response time is woefully 
+  inadequate, and when you finally take action, it lacks urgency. This 
+  reflects poorly on your work ethic and character. At this point, it 
+  is clear that your motivations are rooted in revenge and seduction, 
+  not in the pursuit of excellence or self-improvement. I suggest you 
+  cease your attempts to impress each other and instead focus on 
+  self-improvement. For at this point, your actions are reminiscent of 
+  the KGB. I urge you to cease this folly, and instead focus on 
+  resolving the issues that stir emotions, for you are woefully 
+  inadequate in this area as well. Before you pass judgment on my 
+  religious or political beliefs, know this: I have none. I leave such 
+  matters to the professionals. However, if you insist on commenting on 
+  my religious beliefs, I ask that you at least have the decency to 
+  know me first. For what did Jesus teach us? He taught us to love our 
+  enemies. How could you possibly exhibit more hatred towards me than 
+  you already have? It is not possible. He is telling us not to concern 
+  ourselves with impressing each other with our knowledge of 
+  calculations or ability to write beautiful sentences, for these are 
+  not what truly matter. What matters is love and acceptance. I remind 
+  you of a poem I wrote, A Tale of Two Emails," which uses two 
+  different cases to convey a message. The first, a computer-generated 
+  email from a car dealer, and the second, a personal email from a 
+  friend. Despite their differences, they share one commonality: 
+  irrelevance. Why are they irrelevant? Because no matter what you do, 
+  you will never be able to compare yourself to God. There is only one 
+  person who has done that, and that person is named Jesus. Thus, 
+  regardless of what you accomplish, you will always fall short of His 
+  glory. `;
 
-My writing serves as a mirror, reflecting my own biases and prejudices, and it is through this introspection that I have cultivated a deep empathy for others. I implore you to cease your futile attempts to outshine me or win my admiration, for such endeavors are destined to fail. Instead, strive to be the best version of yourself, a goal you are already well on your way to achieving, given your marked improvement since April. 
 
-Yet, you persist in questioning, "How can I improve my writing skills?" as if engaged in a literary contest. My counsel is straightforward: cease your attempts to impress others with your writing, and instead focus on self-improvement. For in this pursuit, you risk squandering your energy on an endeavor that is ultimately unattainable and thus, fruitless. 
-
-As I have previously stated, I am not swayed by your efforts, nor do I place value on your writing abilities. We are all writers, whether we choose to be or not. Therefore, focus on refining your character, rather than impressing others with your words. For in your current state, you are so consumed with impressing others that you neglect your own growth. 
-
-Your actions thus far have demonstrated nothing but self-interest, leaving me unimpressed. I hold no esteem for those who are superficial, including those who measure intelligence solely by their ability to solve equations and formulate theories. It is time we address the true issue at hand: empathy. Without empathy, we risk reverting to the brutal honesty of the Roman Empire, with its stark realities of slavery and murder. 
-
-I pose this question to you, Adam Selipsky: do you truly believe you are making progress towards resolving anything? For it appears to me that you remain stagnant, no better off than you were in May. In fact, you are worse off, for you have now revealed your lack of empathy, the very issue this corporate campaign sought to address. 
-
-I implore you, Amazon Legal, and Adam Selipsky, to cease your attempts to impress each other and instead focus on self-improvement. Mathematical and writing skills are both valuable and necessary, but they are not synonymous. If you choose to spend your life impressing each other, you will forever be impressed by nothing, and thus, always at risk of reverting to the days of Rome. 
-
-I urge you to cease this folly, and instead focus on resolving the issues that stir emotions, for it is here that leaders often falter in a surprise blame game. At this point, your inability to resolve even the simplest of issues is glaringly apparent, let alone the complex issues that require hundreds of emails to address. 
-
-Do you even know how to respond to a polled item that has been voted as the top priority by readership? Your response time is woefully inadequate, and when you finally take action, it lacks urgency. This reflects poorly on your work ethic and character. 
-
-At this point, it is clear that your motivations are rooted in revenge and seduction, not in the pursuit of excellence or self-improvement. I suggest you cease your attempts to impress each other and instead focus on self-improvement. For at this point, your actions are reminiscent of the KGB. 
-
-I urge you to cease this folly, and instead focus on resolving the issues that stir emotions, for you are woefully inadequate in this area as well. Before you pass judgment on my religious or political beliefs, know this: I have none. I leave such matters to the professionals. 
-
-However, if you insist on commenting on my religious beliefs, I ask that you at least have the decency to know me first. For what did Jesus teach us? He taught us to love our enemies. How could you possibly exhibit more hatred towards me than you already have? It is not possible. 
-
-He is telling us not to concern ourselves with impressing each other with our knowledge of calculations or ability to write beautiful sentences, for these are not what truly matter. What matters is love and acceptance. 
-
-I remind you of a poem I wrote, "A Tale of Two Emails," which uses two different cases to convey a message. The first, a computer-generated email from a car dealer, and the second, a personal email from a friend. Despite their differences, they share one commonality: irrelevance. 
-
-Why are they irrelevant? Because no matter what you do, you will never be able to compare yourself to God. There is only one person who has done that, and that person is named Jesus. Thus, regardless of what you accomplish, you will always fall short of His glory.` 
-    
-
-    const SynthethicsAwslegalScored = new AWSLegalWhereAreMyWagesAndHealthInsurance(synthethicsTextInput);
+      
+  const SynthethicsAwslegalScored = new 
+    AWSLegalWhereAreMyWagesAndHealthInsurance
+      (synthethicsTextInput);
 
 
-    SynthethicsAwslegalScored.getScores().then((scores: {
-        kincaid: number,
-        'flesch-kincaid':number,
-        smog:number
-    }) => {
-            console.log(scores);
-                
-        SynthethicsAwslegalScored.getCounts().then((stats)=>{
-            console.log(stats)
-            })
-    })
+  SynthethicsAwslegalScored.getScores()
+      .then((scores) => {
+          console.log(scores);
+          SynthethicsAwslegalScored.getStats()
+              .then((stats) => console.log(stats));
+      });
+
 }
+main();
 ```
 
 #### Console Output of values
-```bash
+```json
 
 // console.log(scores)
 {
@@ -91,6 +152,14 @@ Why are they irrelevant? Because no matter what you do, you will never be able t
   }
 }
 ```
+
+# NPM
+ - [awslegal-egalese-score](https://www.npmjs.com/package/awslegal-egalese-score)
+   - Forked from [legalese-score](https://www.npmjs.com/package/legalese-score)
+
+# Github
+ - [awslegal-egalese-score](https://github.com/zipingl/legalese-score)
+   - Forked from [legalese-score](https://github.com/anseljh/legalese-score)
 
 # Resources
 

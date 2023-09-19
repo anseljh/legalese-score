@@ -1,6 +1,6 @@
 {
   "name": "awslegal-egalese-score",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Quantify awfulness in legal writing",
   "files": [
     "dist",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anseljh/legalese-score.git"
+    "url": "git+https://github.com/zipingl/legalese-score.git"
   },
   "keywords": [
     "writing",
