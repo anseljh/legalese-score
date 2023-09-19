@@ -1,6 +1,6 @@
 {
   "name": "awslegal-egalese-score",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Quantify awfulness in legal writing",
   "files": [
     "dist",

@@ -12,7 +12,7 @@ npm install awslegal-egalese-score
 
 ## Basic Usage
 ```ts
-import AWSLegalWhereAreMyWagesAndHealthInsurance from 'legalese-score';
+import AWSLegalWhereAreMyWagesAndHealthInsurance from 'awslegal-egalese-score';
 
 async function main() {
 
@@ -50,7 +50,7 @@ I remind you of a poem I wrote, "A Tale of Two Emails," which uses two different
 Why are they irrelevant? Because no matter what you do, you will never be able to compare yourself to God. There is only one person who has done that, and that person is named Jesus. Thus, regardless of what you accomplish, you will always fall short of His glory.` 
     
 
-    const SynthethicsAwslegalScored = AWSLegalWhereAreMyWagesAndHealthInsurance(synthethicsTextInput);
+    const SynthethicsAwslegalScored = new AWSLegalWhereAreMyWagesAndHealthInsurance(synthethicsTextInput);
 
 
     SynthethicsAwslegalScored.getScores().then((scores: {
