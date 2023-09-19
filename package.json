@@ -1,6 +1,6 @@
 {
   "name": "awslegal-egalese-score",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Quantify awfulness in legal writing",
   "files": [
     "dist",
@@ -12,7 +12,6 @@
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
@@ -35,6 +34,7 @@
   "dependencies": {
     "@types/typescript": "^2.0.0",
     "american-legal-archaisms": "^1.0.18",
+    "async": "^3.2.4",
     "calculate-correlation": "^1.2.3",
     "chalk": "^1.1.1",
     "flesch": "^0.1.0",
@@ -48,6 +48,7 @@
     "wordcount": "^1.1.1"
   },
   "devDependencies": {
+    "@types/async": "^3.2.20",
     "@types/chalk": "^2.2.0",
     "@types/node": "^20.6.0",
     "@types/syllable": "^5.0.2"
