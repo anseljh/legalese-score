@@ -124,7 +124,7 @@ class Legalese {
         >(
           {
 
-            correlationCoefficients: async function (cb_parallel_2:
+            correlationCoefficients: function (cb_parallel_2:
               async.AsyncResultCallback<number[][], Error | null>
             ) {
               const correlationCoefficients = _archaism.map((archaism) => {
@@ -135,7 +135,7 @@ class Legalese {
               cb_parallel_2(null, correlationCoefficients);
             },
 
-            inputArrayWordsToCharNumbs: async function (cb_parallel_3:
+            inputArrayWordsToCharNumbs:  function (cb_parallel_3:
               async.AsyncResultCallback<number[][] | null, Error | null>
             ) {
               const inputArrayWordsToCharNumbs = inputArray.map((word) => {
