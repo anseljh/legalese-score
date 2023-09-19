@@ -61,24 +61,36 @@ class Legalese {
    * @return {Counts}
    */
   async getCounts() {
-    
-    const returnCountsSaved = async.ensureAsync ((callback:
-        async.AsyncResultCallback<Counts | null, Error | null>
-      ) => {
-        callback(null, this.counts);
+
+    const returnCountsSaved = async.ensureAsync((callback:
+      async.AsyncResultCallback<Counts | null, Error | null>
+    ) => {
+      callback(null, this.counts);
     });
-    if(this.counts) {
-      return  (new Promise<
+    if (this.counts) {
+      return (new Promise<
         Counts | null
-        >( function (resolve, reject) {
+      >(function (resolve, reject) {
         returnCountsSaved((err, result) => {
-          if(err) {
+          if (err) {
             reject(err)
           }
           resolve(result)
         })
       }))
-    }  else {
+    } else {
+
+      // const inputArrayWordsToCharNumbs = inputArray.map((word) => {
+      //   return word.split("").map((char) => {
+      //     return char.charCodeAt(0);
+      //   });
+      // });
+
+      // const correlationCoefficients = _archaism.map((archaism) => {
+      //   return archaism.split("").map((char) => {
+      //     return char.charCodeAt(0);
+      //   });
+      // });
       const text = this.text;
       const input = text.matchAll(this.wordRegex);
       const inputArray = (Array.from(input) || [])
@@ -88,98 +100,139 @@ class Legalese {
         .map(
           (word) => {
             return word.toLowerCase();
-          }, //remove duplicates
+          },
         )
+        // filter out duplicates
         ?.filter((value, index, self) => {
           return self.indexOf(value) === index;
         });
-  
-      const inputArrayWordsToCharNumbs = inputArray.map((word) => {
-        return word.split("").map((char) => {
-          return char.charCodeAt(0);
-        });
-      });
-  
-      const correlationCoefficients = _archaism.map((archaism) => {
-        return archaism.split("").map((char) => {
-          return char.charCodeAt(0);
-        });
-      });
-  
-      const correlateEveryArchaismForEveryWord = 
-        // inputArrayWordsToCharNumbs.map(async (word) => {
-        //   const wordCoeffArray = await correlationCoefficients.map((archaism) => {
-        //     if (word?.length !== archaism?.length) {
-        //       return 0;
-        //     } else {
-        //       const spearman = new Spearman(word, archaism);
-  
-        //       return spearman.calc() as Promise<number>;
-        //     }
-        //   });
-        //   return Promise.all(wordCoeffArray);
-        // }),
-       await  async.map<number[] | null, number[],Error | null>(
-          inputArrayWordsToCharNumbs,
-          async.asyncify(async (word) => {
-            // const wordCoeffArray = await correlationCoefficients.map((archaism) => {
-            //   if (word?.length !== archaism?.length) {
-            //     return 0; 
-            //   } else {
-            //     const spearman = new Spearman(word, archaism);
-                
-            //     return spearman.calc() as Promise<number>;
-            //   }
-            // });
-            // return Promise.all(wordCoeffArray);
+      const generateInputData = (cb: (
+        err: Error | null,
+        result: {
 
-            return async.map<number[] | null, number,Error | null>(
-              correlationCoefficients,
-              async.asyncify(async (archaism) => {
-                if (word?.length !== archaism?.length) {
-                  return 0;
-                } else {
-                  const spearman = new Spearman(word, archaism);
-                  return spearman.calc() as Promise<number>;
+          correlationCoefficients: number[][] | null;
+          inputArrayWordsToCharNumbs: number[][] | null;
+        }) => void
+      ) => {
+        async.parallel<
+          number[][] | null,
+          {
+            correlationCoefficients: number[][] | null;
+            inputArrayWordsToCharNumbs: number[][] | null;
+          }
+          , Error | null
+        >(
+          {
+
+            correlationCoefficients: async function (cb_parallel_2:
+              async.AsyncResultCallback<number[][], Error | null>
+            ) {
+              const correlationCoefficients = _archaism.map((archaism) => {
+                return archaism.split("").map((char) => {
+                  return char.charCodeAt(0);
+                });
+              });
+              cb_parallel_2(null, correlationCoefficients);
+            },
+
+            inputArrayWordsToCharNumbs: async function (cb_parallel_3:
+              async.AsyncResultCallback<number[][] | null, Error | null>
+            ) {
+              const inputArrayWordsToCharNumbs = inputArray.map((word) => {
+                return word.split("").map((char) => {
+                  return char.charCodeAt(0);
+                });
+              });
+              cb_parallel_3(null, inputArrayWordsToCharNumbs);
+
+
+            }
+          },
+        ).then((result) => {
+          cb(null, result);
+        }
+        ).catch((err) => {
+          return cb(err, null);
+        });
+
+
+
+      }
+      const memoizedSetCounts = async.memoize(
+
+        (
+          wordCorrelationSum: number[] | undefined | null,
+          callback:
+            async.AsyncResultCallback<Counts | null, Error | null>
+        ) => {
+          const maxCorrelation = Math.max(...wordCorrelationSum);
+          const indexOfMaxCorrelation = wordCorrelationSum.indexOf(maxCorrelation);
+
+          const minCorrelation = Math.min(...wordCorrelationSum);
+          const indexOfMinCorrelation = wordCorrelationSum.indexOf(minCorrelation);
+
+          const avg =
+            wordCorrelationSum.reduce((acc, curr) => {
+              return acc + curr;
+            }, 0) / wordCorrelationSum.length;
+
+
+
+          const counts = {
+            sentence: text.split(this.sentenceRegex).length,
+            word: wordcount(text),
+            syllable: syllable(text),
+            archaisms_correlation: {
+              avg_correlation: avg,
+              max_correlation: maxCorrelation,
+              min_correlation: minCorrelation,
+              most_archaic_word: inputArray[indexOfMaxCorrelation],
+              most_modern_word: inputArray[indexOfMinCorrelation],
+            },
+          };
+          this.counts = counts;
+
+          callback(null, counts);
+
+        });
+      return async.waterfall<
+        Counts | null
+      >([
+        generateInputData,
+        function (result: {
+          correlationCoefficients: number[][] | null;
+          inputArrayWordsToCharNumbs: number[][] | null;
+        }, cb: (err: Error | null,
+
+          correlateEveryArchaismForEveryWord: number[][] | null) => void) {
+
+          async.map<number[] | null, number[], Error | null>(
+            result.inputArrayWordsToCharNumbs,
+            async.asyncify(async (word) => {
+
+
+              return async.map<number[] | null, number, Error | null>(
+                result.correlationCoefficients,
+                async.asyncify(async (archaism) => {
+                  if (word?.length !== archaism?.length) {
+                    return 0;
+                  } else {
+                    const spearman = new Spearman(word, archaism);
+                    return spearman.calc() as Promise<number>;
+                  }
                 }
-              }
-              )
-            );
-          }),
-        );
-
-
-      
-
-      // const correlateEveryArchaismForEveryWord = await async.map<number[] | null, number[],Error | null>(
-      //   inputArrayWordsToCharNumbs,
-      //   (word, callback) => {
-      //     // const wordCoeffArray = correlationCoefficients.map((archaism) => {
-      //     //   if (word?.length !== archaism?.length) {
-      //     //     return 0;
-      //     //   } else {
-      //     //     return Spearman(word, archaism);
-      //     //   }
-      //     // });
-      //      const wordCoeffArray = correlationCoefficients.map((archaism) => {
-      //       if (word?.length !== archaism?.length) {
-      //         return 0;
-      //       } else {
-      //         return  new Spearman(word, archaism).calc();
-      //       }
-      //     });
-      //     callback(null, wordCoeffArray);
-      //   },
-         
-      // );
-
-
-
-         
- 
-      const wordCorrelationSum = 
-          await async.map<number[] | null, number,Error | null>(
-            correlateEveryArchaismForEveryWord,
+                )
+              );
+            }),
+          ).then((result) => {
+            cb(null, result);
+          }).catch((err) => {
+            cb(err, null);
+          })
+        },
+        function (wordCorrelation: number[][], cb: (err: Error | null, result: number[] | null) => void) {
+          async.map<number[] | null, number, Error | null>(
+            wordCorrelation,
             async.asyncify(async (wordCoeffArray) => {
               let maxCoeif = 0;
               wordCoeffArray.forEach((coefficient) => {
@@ -187,62 +240,58 @@ class Legalese {
                   maxCoeif = coefficient;
                 }
               }
-              
+
               );
               return maxCoeif;
             }),
-          );
-            
+          ).then((result) => {
+            cb(null, result);
+          }
+          ).catch((err) => {
+            cb(err, null);
+          }
+          )
 
-  
-      const maxCorrelation = Math.max(...wordCorrelationSum);
-      const indexOfMaxCorrelation = wordCorrelationSum.indexOf(maxCorrelation);
-  
-      const minCorrelation = Math.min(...wordCorrelationSum);
-      const indexOfMinCorrelation = wordCorrelationSum.indexOf(minCorrelation);
-  
-      const avg =
-        wordCorrelationSum.reduce((acc, curr) => {
-          return acc + curr;
-        }, 0) / wordCorrelationSum.length;
-  
-   
-       const counts = {
-        sentence: text.split(this.sentenceRegex).length,
-        word: wordcount(text),
-        syllable: syllable(text),
-        archaisms_correlation: {
-          avg_correlation: avg,
-          max_correlation: maxCorrelation,
-          min_correlation: minCorrelation,
-          most_archaic_word: inputArray[indexOfMaxCorrelation],
-          most_modern_word: inputArray[indexOfMinCorrelation],
         },
-      };
 
-      this.counts = counts;
-      return counts;
+        function (wordCorrelationSum: number[] | undefined | null, cb: (err: Error | null, result?: Counts) => void) {
+
+
+
+
+
+          memoizedSetCounts(wordCorrelationSum, cb);
+        }
+      ],
+
+
+
+      )
     }
-    
+
+
+
+
+
   }
   getFleschScore() {
     return flesch(this.text);
   }
 
   async getScores() {
-    const returnSavedScores = async.ensureAsync(( callback:
+    const returnSavedScores = async.ensureAsync((callback:
 
       async.AsyncResultCallback<Score | null, Error | null>
     ) => {
       callback(null, this.scores);
     });
- 
-  
+
+
 
     const getCountsMemoized = async.memoize(
       (callback:
-          async.AsyncResultCallback<Counts | null, Error | null>
-        ) =>{
+        async.AsyncResultCallback<Counts | null, Error | null>
+      ) => {
         this.getCounts().then((counts) => {
           callback(null, counts);
         }).catch((err) => {
@@ -251,46 +300,46 @@ class Legalese {
         )
       }
 
-    ) ;
+    );
 
-  
+
 
     if (this.scores) {
-      return (new Promise( function (resolve, reject) {
+      return (new Promise(function (resolve, reject) {
         returnSavedScores((err, result) => {
-          if(err) {
+          if (err) {
             reject(err)
           }
           resolve(result)
         })
       }))
     } else {
-      return  async.waterfall<
-    
-        Score |  null
+      return async.waterfall<
+
+        Score | null
       >([
-        function (callback: 
-            (err: Error | null, result?: Counts | null) => void
-          ) {
+        function (callback:
+          (err: Error | null, result?: Counts | null) => void
+        ) {
           getCountsMemoized(callback);
         },
-        function (counts: Counts | undefined |null, callback?: (err: Error | null, result: Score | null) => void) {
-          
+        function (counts: Counts | undefined | null, callback?: (err: Error | null, result: Score | null) => void) {
+
           async.parallel(
             {
               flesch: function (cb_parallel: (err: Error | null, result: number | null) => void) {
                 cb_parallel(null, flesch(counts));
               },
-              "flesch-kincaid": function ( cb_parallel: (err: Error | null, result: number | null) => void) {
+              "flesch-kincaid": function (cb_parallel: (err: Error | null, result: number | null) => void) {
                 cb_parallel(null, fleschKincaid(counts));
               },
               "smog": function (cb_parallel: (err: Error | null, result: number | null) => void) {
                 cb_parallel(null, smog(counts));
-                          },
+              },
 
             },
             function (err: Error | null, results: Score | null) {
-        
+
               callback(err, results);
             },
           )
