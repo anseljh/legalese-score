@@ -1,0 +1,56 @@
+{
+    
+    
+    "compilerOptions": {
+        "target": "ES2022",
+        "module":  "CommonJS",
+        "moduleResolution": "Node",
+        "outDir": "dist",
+        "declaration": true,
+        "declarationDir": "dist",
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "lib": [
+            "DOM.Iterable",
+            "DOM",
+            "ES6",
+            "ES5",
+            "ES2022",
+            "ESNext"
+        ],
+        "allowSyntheticDefaultImports": true,
+       
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules/@types/jest"
+ 
+        ],
+  
+        "esModuleInterop": true,
+        
+    },
+
+    "include": [
+        "src/index.ts",
+
+    ],
+    "exclude": [
+        "./test.ts",
+        "./node_modules",
+        "./dist",
+        
+    ],
+ 
+    
+    "ts-node": {
+
+        "compilerOptions": {
+            "target": "es5",
+            "module": "commonjs",
+            "outDir": "dist",
+            "strict": true,
+            "esModuleInterop": true,
+            "forceConsistentCasingInFileNames": true
+        }
+    }
+}
